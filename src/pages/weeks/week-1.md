@@ -15,5 +15,3 @@ This week, we got introduced to the class, started building our websites, and br
 2. 🚗🥛 Drink carrier: a remote-controlled (or autonomous) car that can carry around drinks in a gimbal for spill-free transportation of drinks.
 
 3. 🤖🧹 Tabletop Roomba: to clean up dust on a desk.
-
-## (Extra) How this site was built

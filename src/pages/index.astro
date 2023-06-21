@@ -2,6 +2,8 @@
 import Base from '../layouts/Base.astro';
 import ArticleBody from '../components/ArticleBody.astro';
 import Card from '../components/Card.astro';
+
+const posts = import.meta.glob('./weeks/*.{md,mdx}');
 ---
 
 <Base title="William's PHYS S-12 page">
@@ -33,6 +35,22 @@ import Card from '../components/Card.astro';
           <li>Some customization using HTML and CSS</li>
           <li>A <a href="/weeks/week-1">final project proposal</a></li>
         </ul>
+
+        <p>List of weeks:</p>
+        <ol type="1">
+          {
+            Object.entries(posts).map(([name, fun]) => {
+              let path = name.replace(/\.[^/.]+$/, '');
+              return (
+                <li>
+                  <code>
+                    <a href={path}>{path}</a>
+                  </code>
+                </li>
+              );
+            })
+          }
+        </ol>
       </ArticleBody>
     </main>
   </div>
@@ -45,13 +63,6 @@ import Card from '../components/Card.astro';
 <style>
   body {
     margin: 0;
-    background: rgb(61, 52, 214);
-    background: linear-gradient(
-      35deg,
-      rgba(61, 52, 214, 1) 0%,
-      rgba(49, 172, 78, 1) 55%,
-      rgba(0, 212, 255, 1) 100%
-    );
     background-attachment: fixed;
   }
 
@@ -70,7 +81,7 @@ import Card from '../components/Card.astro';
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 15em 2em 2em 2em;
+    padding: 0em 2em 0em 2em;
     box-sizing: border-box;
 
     color: #fff;
@@ -82,5 +93,14 @@ import Card from '../components/Card.astro';
     font-weight: 900;
     font-size: 5em;
     word-wrap: break-word;
+
+    background: linear-gradient(
+      35deg,
+      rgba(61, 52, 214, 1) 0%,
+      rgba(49, 172, 78, 1) 55%,
+      rgba(0, 212, 255, 1) 100%
+    );
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
   }
 </style>
