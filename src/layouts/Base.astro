@@ -1,0 +1,63 @@
+---
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Twemoji is great -->
+    <script
+      src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js"
+      crossorigin="anonymous"></script>
+
+    <title>{title}</title>
+
+    <slot name="head" />
+  </head>
+
+  <body>
+    <slot name="body" />
+  </body>
+
+  <script>
+    twemoji.parse(document.body);
+  </script>
+  <slot name="after-body" />
+</html>
+
+<style is:global>
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+
+  code {
+    font-size: 12pt;
+    border: 1px solid #ddd;
+    padding: 1pt 3pt;
+    border-radius: 5px;
+    background-color: #fbfbfb;
+  }
+
+  ul li {
+    margin-bottom: 0.25em;
+  }
+
+  img.emoji {
+    height: 1em;
+    width: 1em;
+    margin: 0 0.05em 0 0.1em;
+    vertical-align: -0.1em;
+  }
+</style>
