@@ -16,7 +16,7 @@ const posts = import.meta.glob('./weeks/*.{md,mdx}');
 
   <div slot="body">
     <div class="banner">
-      <h1>PHYS S-12: Intro to digital fabrication</h1>
+      <h1 class="fancy-text">PHYS S-12: Intro to digital fabrication</h1>
     </div>
 
     <main>
@@ -70,7 +70,6 @@ const posts = import.meta.glob('./weeks/*.{md,mdx}');
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 1em;
 
     background-color: #fff;
     padding-bottom: 200px;
@@ -81,26 +80,38 @@ const posts = import.meta.glob('./weeks/*.{md,mdx}');
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 0em 2em 0em 2em;
+    padding: 0 1em;
     box-sizing: border-box;
-
-    color: #fff;
   }
 
   .banner h1 {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0;
     font-weight: 900;
-    font-size: 5em;
+    font-size: clamp(2em, 6vw, 5em);
     word-wrap: break-word;
+  }
 
-    background: linear-gradient(
-      35deg,
-      rgba(61, 52, 214, 1) 0%,
-      rgba(49, 172, 78, 1) 55%,
-      rgba(0, 212, 255, 1) 100%
-    );
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+  @media (prefers-reduced-motion: no-preference) {
+    .fancy-text {
+      --bg-size: 400%;
+      background: linear-gradient(
+          90deg,
+          rgba(61, 52, 214, 1),
+          rgba(49, 172, 78, 1),
+          rgba(0, 185, 222, 1),
+          rgba(61, 52, 214, 1)
+        )
+        0 0 / var(--bg-size) 100%;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: move-bg 120s infinite linear;
+    }
+    @keyframes move-bg {
+      to {
+        background-position: var(--bg-size) 0;
+      }
+    }
   }
 </style>
