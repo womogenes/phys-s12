@@ -1,0 +1,62 @@
+<nav>
+  <div class="nav-container">
+    <!-- Home -->
+    <li class="pill"><a href="/">Home</a></li>
+
+    <!-- Main links -->
+    <ul class="main-links">
+      <li class="pill"><a href="/about">About</a></li>
+      <li class="pill"><a href="/weeks/week-1">Week 1</a></li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  nav {
+    width: 100%;
+  }
+
+  .nav-container {
+    display: flex;
+    width: 100%;
+    padding: 1em 1em;
+    box-sizing: border-box;
+
+    background-color: #fff;
+    backdrop-filter: blur(100px);
+  }
+
+  ul.main-links {
+    display: flex;
+    gap: 0.5em;
+
+    margin: 0;
+    margin-left: auto;
+    margin-right: 0;
+    padding: 0;
+  }
+  .pill {
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 9999px;
+    cursor: pointer;
+
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    transition: background-color 0.5s;
+  }
+  .pill a {
+    color: #000 !important;
+  }
+  /* Eliminate animations here */
+  .pill a::before,
+  a::after {
+    display: none;
+  }
+  /* Other animations */
+  .pill:hover {
+    background-color: #f0f0f0;
+  }
+</style>
