@@ -5,7 +5,7 @@ import Card from '../components/Card.astro';
 
 import { getCollection, getEntry, getEntries } from 'astro:content';
 
-const allBlogPosts = await getCollection('weeks');
+const allWeekPages = await getCollection('weeks');
 ---
 
 <Base title="William's PHYS S-12 page">
@@ -24,7 +24,12 @@ const allBlogPosts = await getCollection('weeks');
     <main>
       <ArticleBody>
         <h1>Welcome 👋</h1>
-        <p>This site contains:</p>
+        <p>
+          As per <a
+            href="https://nathanmelenbrink.github.io/intro-dig-fab/01_intro/index.html"
+            >requirements</a
+          >, this site contains:
+        </p>
         <ul>
           <li>
             An <code>index.html</code> page that contains links to each assignment
@@ -38,22 +43,21 @@ const allBlogPosts = await getCollection('weeks');
           <li>A <a href="/weeks/week-1">final project proposal</a></li>
         </ul>
 
-        <p>List of weeks:</p>
-        <pre><code>{JSON.stringify(allBlogPosts)}</code></pre>
-        <ol type="1">
-          <!-- {
-            Object.entries(posts).map(([name, fun]) => {
-              let path = name.replace(/\.[^/.]+$/, '');
+        <div class="card-grid">
+          {
+            allWeekPages.map(({ id, slug, body, data }) => {
               return (
-                <li>
-                  <code>
-                    <a href={path}>{path}</a>
-                  </code>
-                </li>
+                <a href={`/weeks/${slug}`} class="card">
+                  <img src={data.image} />
+                  <div>
+                    <h2>{data.title}</h2>
+                    <p>{data.blurb}</p>
+                  </div>
+                </a>
               );
             })
-          } -->
-        </ol>
+          }
+        </div>
       </ArticleBody>
     </main>
   </div>
@@ -75,7 +79,10 @@ const allBlogPosts = await getCollection('weeks');
     align-items: center;
 
     background-color: #fff;
-    padding-bottom: 200px;
+  }
+  main h1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .banner {
@@ -86,15 +93,61 @@ const allBlogPosts = await getCollection('weeks');
     padding: 0 1em;
     box-sizing: border-box;
   }
-
   .banner h1 {
     max-width: 600px;
     margin: 0;
     font-weight: 900;
     font-size: clamp(2em, 4vw, 5em);
     word-wrap: break-word;
+    line-height: 1.2;
   }
 
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  @media only screen and (max-width: 440px) {
+    /* Fewer columns on small screens */
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+  }
+  .card div {
+    padding: 10px 20px;
+  }
+  .card div h2 {
+    margin: 0;
+    margin-bottom: 3px;
+    overflow-wrap: anywhere;
+  }
+  .card div h2 a {
+    color: #000;
+    transition: color 0.1s;
+  }
+  .card div h2 a:hover {
+    color: #888;
+  }
+  .card div h2 a::after {
+    display: none;
+  }
+  .card div p {
+    color: #444;
+    font-size: 0.9em;
+    line-height: 1;
+    margin: 0;
+  }
+
+  /* Fancy text gradient animation */
   @media (prefers-reduced-motion: no-preference) {
     .fancy-text {
       --bg-size: 400%;
@@ -109,7 +162,7 @@ const allBlogPosts = await getCollection('weeks');
       color: transparent;
       -webkit-background-clip: text;
       background-clip: text;
-      animation: move-bg 120s infinite linear;
+      animation: move-bg 60s infinite linear;
     }
     @keyframes move-bg {
       to {

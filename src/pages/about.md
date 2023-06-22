@@ -3,8 +3,6 @@ layout: ../layouts/Article.astro
 title: About page
 ---
 
-# About me
-
 <div style="width: 100%; display: flex; justify-content: center;">
   <img
     src="/assets/images/william_in_fab_lab.png"

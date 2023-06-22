@@ -1,12 +1,13 @@
 <nav>
   <div class="nav-container">
     <!-- Home -->
-    <li class="pill"><a href="/">Home</a></li>
+    <a href="/"><img src="/assets/logo.svg" width="30" /></a>
 
     <!-- Main links -->
     <ul class="main-links">
-      <li class="pill"><a href="/about">About</a></li>
-      <li class="pill"><a href="/weeks/week-1">Week 1</a></li>
+      <li><a class="pill" href="/">Home</a></li>
+      <li><a class="pill" href="/weeks/week-1">Week 1</a></li>
+      <li><a class="pill" href="/about">About</a></li>
     </ul>
   </div>
 </nav>
@@ -36,8 +37,10 @@
     margin-right: 0;
     padding: 0;
   }
-  .pill {
+  ul.main-links li {
     list-style-type: none;
+  }
+  .pill {
     margin: 0;
     padding: 6px 12px;
     border: 1px solid #ccc;
@@ -48,7 +51,7 @@
     background-color: transparent;
     transition: background-color 0.2s;
   }
-  .pill a {
+  a {
     color: #000 !important;
   }
   /* Eliminate animations here */

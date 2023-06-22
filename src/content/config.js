@@ -5,6 +5,7 @@ const weekCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     image: z.string().optional(),
+    blurb: z.string().optional(),
   }),
 });
 
