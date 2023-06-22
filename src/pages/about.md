@@ -5,7 +5,7 @@ title: About page
 
 <div style="width: 100%; display: flex; justify-content: center;">
   <img
-    src="../../assets/images/william_in_fab_lab.png"
+    src="/assets/images/william_in_fab_lab.png"
     width="200px"
     height="200px"
     style="object-fit: cover; border-radius: 20px;" />
